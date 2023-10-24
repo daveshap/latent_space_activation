@@ -27,3 +27,5 @@ You can see this method implemented in the first experiment `technique01_dialog.
 ## Technique 2: Brainstorm Search Hypothesize Refine (BSHR)
 
 This technique models "information foraging" in humans wherein you have a *naive query* (e.g. a question that you don't even know enough about to ask the right questions, in other words there are too many "unknown unknowns"). In this case, you form a hypothesis, search for clues, and iteratively refine your final answer. This is a simple "search loop" that is easy enough to approximate. 
+
+(more coming soon, maybe)

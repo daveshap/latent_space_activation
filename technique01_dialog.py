@@ -58,7 +58,7 @@ if __name__ == '__main__':
   'What techniques or methods do I know that I can use to answer this question or solve this problem? How can I integrate what I already know, and recall more valuable facts, approaches, and techniques?',
   'And finally, with all this in mind, I will now discuss the question or problem and render my final answer.',]
     conversation = list()
-    conversation.append({'role': 'system', 'content': open_file('system01_dialog.txt')})
+    conversation.append({'role': 'system', 'content': open_file('system01_dialog.txt').replace('<<QUERY>>', main_question)})
 
     for p in prompts:
         conversation.append({'role': 'user', 'content': p})
