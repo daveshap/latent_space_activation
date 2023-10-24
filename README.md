@@ -21,3 +21,9 @@ Dialog 2: Next, maybe I need to figure out how I define the answer. What criteri
 
 Dialog 3: Based on all this, what can I answer?
 ```
+
+You can see this method implemented in the first experiment `technique01_dialog.py`. To use this, just run it, ask a question, and you will see the internal dialog process. This is aided by `system01_dialog.txt` which is not strictly necessary - you could simply use prompt chaining and an ordinary conversation to achieve the same or similar results. 
+
+## Technique 2: Brainstorm Search Hypothesize Refine (BSHR)
+
+This technique models "information foraging" in humans wherein you have a *naive query* (e.g. a question that you don't even know enough about to ask the right questions, in other words there are too many "unknown unknowns"). In this case, you form a hypothesis, search for clues, and iteratively refine your final answer. This is a simple "search loop" that is easy enough to approximate. 
