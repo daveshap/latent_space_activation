@@ -1,6 +1,8 @@
 import openai
 import requests
 import json
+import time
+import halo
 
 # Initialize main hypothesis and evidence list
 main_query = input('What is your primary information query? ')
@@ -76,7 +78,7 @@ def chatbot(conversation, model="gpt-4", temperature=0, max_tokens=2000):
 
 # Define the function to use the ChatGPT API
 def use_chatgpt(system_message, user_message):
-    conversation = list()
+    conversation = []  # Initialize an empty list for the conversation
     conversation.append({'role': 'system', 'content': system_message})
     conversation.append({'role': 'user', 'content': user_message})
     response, tokens = chatbot(conversation)
@@ -86,7 +88,7 @@ def use_chatgpt(system_message, user_message):
 # Main loop
 while True:
     # Step 1: Brainstorm a list of search queries
-    search_queries_json = use_chatgpt(brainstorm_system_message, main_question)
+    search_queries_json = use_chatgpt(brainstorm_system_message, main_query) ## Did you intent for main_question to be main_query??
     search_queries = json.loads(search_queries_json)
 
     # Step 2: Search the internet
@@ -98,7 +100,9 @@ while True:
         search_urls.append(url)
 
     # Step 3: Generate a hypothesis
-    new_hypothesis = use_chatgpt(hypothesis_system_message, f"Main Question: {main_question}\n\n\nArticles:\n\n{\n\n.join(search_results)}"
+    articles_str = "\n".join(search_results)  # Updated the join statement
+    new_hypothesis = use_chatgpt(hypothesis_system_message, f"Main Question: {main_query}\n\n\nArticles:\n\n{articles_str}")  # Updated the string formatting and variable name
+
 
     # Step 4: Compare the new hypothesis to the original and update accordingly
     # ... (this will depend on how you want to compare and update the hypotheses)
